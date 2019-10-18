@@ -10,7 +10,9 @@ class BootStrap {
 
         if (User.count() == 0) {
             new User(username:'parent', password:'demopassword').save(flush:true, failOnError:true)
-            UserRole.create(User.first(), Role.first(), true)
+            new UserRole(user:User.first(), role:Role.first()).save(flush:true, failOnError:true)
+            new AuthenticationToken(username:'parent',
+                                    tokenValue:'tglss3t0u1lbn1ccuslj0lmtof65gi9l').save(flush:true, failOnError:true)
         }
     }
 
